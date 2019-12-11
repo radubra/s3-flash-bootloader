@@ -30,6 +30,9 @@ readonly ami_id="$1"
 shift
 readonly s3_url="$1"
 
+EC2_AVAILABILITY_ZONE=$(curl http://169.254.169.254/latest/meta-data/placement/availability-zone)
+EC2_INSTANCE_ID=$(curl http://169.254.169.254/latest/meta-data/instance-id)
+
 readonly device_name="/dev/xvdg"
 
 cat >&2 <<EOF
